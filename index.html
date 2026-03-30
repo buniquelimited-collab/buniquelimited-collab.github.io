@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bid Exchange</title>
+
+
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '795914086903812');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=795914086903812&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+
+
+
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body */
+    body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f1f1f1;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 130vh;
+
+
+}
+
+    /* Header */
+   /* General Header Styling */
+/* General Header Styling */
+/* General Header Styling */
+header {
+  align-items: center;
+    box-sizing: border-box;
+    display: flex
+;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: unset;
+    width: 100%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hamburger {
+  font-size: 30px;
+  display: none; /* Hidden by default */
+  cursor: pointer;
+}
+
+.header-left img {
+  height: 40px; /* Adjust logo size as needed */
+}
+
+.header-right {
+  display: flex;
+}
+
+.header-btn {
+  border: 1px solid #1c1e21;
+    border-radius: 50px;
+    color: #1c1e21;
+    line-height: 16px;
+    overflow: hidden;
+    padding: 16px 28px;
+    position: relative;
+    text-align: center;
+    transition: color .33s linear .5s, border-color ease-out .5s, background-color .33s linear 0s;
+    white-space: pre;
+    z-index: 1;
+}
+
+
+.header-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Navigation Menu */
+.nav {
+  display: flex;
+  justify-content: center;
+  background-color: #f1f1f1;
+  padding: 10px 0;
+  position: absolute;
+  width: 100%;
+  top: 60px; /* Position below the header */
+  left: 0;
+  display: none; /* Hide menu by default on desktop */
+}
+
+.nav a {
+  color: rgb(32, 32, 32);
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 16px;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Desktop View - Align Logo, Buttons, and Menu in a Row */
+@media (min-width: 769px) {
+  .header-container {
+    justify-content: space-between;
+  }
+
+  .header-left {
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-right {
+    display: flex;
+  }
+
+  .hamburger {
+    display: none; /* Hide hamburger on desktop */
+  }
+
+  .nav {
+    display: flex; /* Show menu on desktop */
+    flex-direction: row; /* Align items horizontally */
+  }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .header-container {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-right {
+    display: none; /* Hide buttons on mobile */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger on mobile */
+  }
+
+  .nav {
+    flex-direction: column; /* Stack nav items vertically */
+    align-items: center;
+    display: none; /* Hide menu initially */
+  }
+}
+
+
+    /* Main Content */
+    .main-content {
+  padding: 40px 20px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content inside main-content */
+  align-items: center; /* Horizontally center the content inside main-content */
+}
+    .main-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .main-content p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    margin-top: 47px;
+}
+
+    .cta-btn {
+      font-size: 18px;
+      color: #fff;
+      background: #128c7e;
+      border: none;
+      cursor: pointer;
+      border-radius: 40px;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+    }
+
+    .cta-btn:hover {
+      background-color: #128C7E;
+    }
+
+    /* Footer */
+    .footer {
+    padding: 110px;
+    text-align: center;
+    background-color: #111b21;
+    margin-top: auto;
+}
+
+    .download-btn {
+      background-color: #25D366;
+      color: white;
+      padding: 20px 30px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 20px 0;
+    }
+
+    .sections-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      text-align: left;
+      margin-top: 0;
+    }
+
+    .section h4 {
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .links {
+      list-style-type: none;
+      padding: 0;
+      color: white ;
+      font-size: 18px;
+    }
+
+    .links li {
+      margin: 6px 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      color: white;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #1c1e21;
+      color: #fff;
+      transition: transform 0.3s ease;
+      margin: 0 5px;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.1);
+    }
+
+    select {
+      margin-top: 10px;
+      padding: 5px;
+      background: #2c2c2e;
+      color: white;
+      border: 1px solid #555;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .footer {
+        padding: 10px;
+      }
+
+      .section h4 {
+        font-size: 13px;
+        color: white;
+      }
+
+      .links li {
+        font-size: 18px;
+      }
+    }
+
+
+
+
+
+
+
+
+.whatsapp-logo-desktop {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.whatsapp-button {
+    padding: 17px 24px;
+    background-color: #25D366;
+    color: #000000;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+}
+
+.whatsapp-logo-mobile {
+  display: none;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.whatsapp-logo-mobile img {
+  width: 60px;
+}
+
+/* Responsive for Mobile */
+@media screen and (max-width: 768px) {
+  .sections-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo-button-column {
+    display: none; /* hide desktop version on mobile */
+  }
+
+  .whatsapp-logo-mobile {
+    display: block;
+  }
+}
+
+.main-content img {
+
+
+
+  border-radius: 50%;
+    height: 118px;
+    object-fit: scale-down;
+    width: 118px;
+}
+
+
+@media (min-width: 768px) {
+  .main-content img {
+        height: 165px;
+        width: 165px;
+    }
+}
+._9scb, ._9y16 ._9scb {
+        margin-bottom: 32px;
+    }
+
+    ._9tpv {
+    height: 1px;
+    width: 100%;
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <!-- Hamburger (left on mobile) -->
+      <div class="hamburger" onclick="toggleMenu()">
+        ☰
+      </div>
+  
+      <!-- Logo center on desktop -->
+      <div class="header-left">
+        <img src="static.whatsapp.net/rsrc.php/yZ/r/JvsnINJ2CZv.svg" alt="WhatsApp Logo" class="whatsapp-logo">
+      </div>
+  
+      <!-- Buttons right on desktop -->
+      <div class="header-right">
+        <button class="header-btn">Sign Up</button>
+        <a href="https://web.whatsapp.com/" target="_blank" class="_aeo8 _9vcv _9u4o _9u4j _9sep">
+          <span class="_advp _aeam">Log in</span>
+          <span>
+            <svg class="_abjs _agnt _9u4c" width="10" height="15" viewBox="0 0 10 18" fill="none">
+              <path d="M0.879395 13.0463L6.41356 7.5L0.879395 1.95375L2.58314 0.25L9.83315 7.5L2.58314 14.75L0.879395 13.0463Z" fill="currentColor"></path>
+            </svg>
+          </span>
+        </a>
+        
+      </div>
+    </div>
+  
+    <!-- Navigation Menu (Mobile view only, shown on toggle) -->
+    <nav class="nav" id="navMenu">
+      <a href="#">Download</a>
+      <a href="#">What We Do</a>
+      <a href="#">Features</a>
+      <a href="#">Blog</a>
+      <a href="#">Security</a>
+      <a href="#">For Business</a>
+    </nav>
+  </header>
+  
+  
+      
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <a href="#">  <img src="img/Bid-Dp.png" alt=""></a>
+    <p>Bid Exchange</p>
+    <a href="https://wa.me/917599999392" class="cta-btn">Continue to Chat</a>
+    <p class="_9vd5" style="color:#5E5E5E;">I NEED Bid Exchange ID</p>
+    <hr class="_9tpv _9ydm _9scb" style="background-color:#F0F4F9;">
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <!-- WhatsApp Logo for mobile -->
+    <div class="whatsapp-logo-mobile">
+      <img src="static.whatsapp.net/rsrc.php/yZ/r/JvsnINJ2CZv.svg" alt="WhatsApp Logo" />
+    </div>
+  
+    <div class="sections-wrapper">
+      <!-- Column 1: WhatsApp Logo + Button -->
+      <div class="section logo-button-column">
+        <!-- Desktop WhatsApp Logo -->
+        <img class="whatsapp-logo-desktop" src="static.whatsapp.net/rsrc.php/yZ/r/JvsnINJ2CZv.svg" alt="WhatsApp Logo" />
+        
+        <!-- Button -->
+        <button class="whatsapp-button">Chat on WhatsApp</button>
+      </div>
+  
+      <!-- Column 2 -->
+      <div class="section">
+        <h4>What we do</h4>
+        <ul class="links">
+          <li>Features</li>
+          <li>Blog</li>
+          <li>Security</li>
+          <li>For Business</li>
+        </ul>
+      </div>
+  
+      <!-- Column 3 -->
+      <div class="section">
+        <h4>Who we are</h4>
+        <ul class="links">
+          <li>About us</li>
+          <li>Careers</li>
+          <li>Brand Center</li>
+          <li>Privacy</li>
+        </ul>
+      </div>
+  
+      <!-- Column 4 -->
+      <div class="section">
+        <h4>Use WhatsApp</h4>
+        <ul class="links">
+          <li>Android</li>
+          <li>iPhone</li>
+          <li>Mac/PC</li>
+          <li>WhatsApp Web</li>
+        </ul>
+      </div>
+  
+      <!-- Column 5 -->
+      <div class="section">
+        <h4>Need help?</h4>
+        <ul class="links">
+          <li>Contact Us</li>
+          <li>Help Center</li>
+          <li>Apps</li>
+          <li>Security Advisories</li>
+        </ul>
+      </div>
+    </div>
+
+  <div class="footer-bottom">
+    <p>2025 © WhatsApp LLC</p>
+    <p>Terms & Privacy Policy | Sitemap</p>
+    <div class="social-icons">
+
+      <a aria-label="Twitter" href="#" target="_blank" style="color: white;">
+        <svg viewBox="0 0 1200 1227" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor"></path>
+        </svg>
+        </a>
+        
+        <!-- Facebook -->
+        <a href="#" target="_blank" aria-label="Facebook" style="color: #ffffff;">
+          <svg width="11" height="21" viewBox="0 0 11 21" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.51 3.82003H10.39V0.64003C9.47975 0.545377 8.56516 0.498646 7.65 0.50003C4.93 0.50003 3.07 2.16003 3.07 5.20003V7.82003H0V11.38H3.07V20.5H6.75V11.38H9.81L10.27 7.82003H6.75V5.55003C6.75 4.50003 7.03 3.82003 8.51 3.82003Z" />
+          </svg>
+        </a>
+        
+        <!-- Instagram -->
+        <a href="#" target="_blank" aria-label="Instagram" style="color: #ffffff;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.5 2C4.46243 2 2 4.46243 2 7.5V16.5C2 19.5376 4.46243 22 7.5 22H16.5C19.5376 22 22 19.5376 22 16.5V7.5C22 4.46243 19.5376 2 16.5 2H7.5ZM18 4C18.5523 4 19 4.44772 19 5C19 5.55228 18.5523 6 18 6C17.4477 6 17 5.55228 17 5C17 4.44772 17.4477 4 18 4ZM12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z" />
+          </svg>
+        </a>
+        
+        <!-- YouTube -->
+        <a href="#" target="_blank" aria-label="YouTube" style="color: #ffffff;">
+          <svg width="23" height="16" viewBox="0 0 23 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.0088 5.95168C22.0583 4.52034 21.7452 3.0997 21.0988 1.82168C20.6602 1.29728 20.0515 0.943393 19.3788 0.821683C16.5963 0.569209 13.8023 0.465727 11.0088 0.511683C8.22546 0.463642 5.44152 0.563783 2.66882 0.811683C2.12064 0.9114 1.61333 1.16853 1.20882 1.55168C0.308816 2.38168 0.208816 3.80168 0.108816 5.00168C-0.036272 7.15925 -0.036272 9.32412 0.108816 11.4817C0.137746 12.1571 0.23831 12.8275 0.408816 13.4817C0.529391 13.9867 0.773339 14.454 1.11882 14.8417C1.52608 15.2451 2.0452 15.5169 2.60882 15.6217C4.76473 15.8878 6.93703 15.9981 9.10882 15.9517C12.6088 16.0017 15.6788 15.9517 19.3088 15.6717C19.8863 15.5733 20.42 15.3012 20.8388 14.8917C21.1188 14.6116 21.3279 14.2688 21.4488 13.8917C21.8064 12.7943 21.9821 11.6458 21.9688 10.4917C22.0088 9.93168 22.0088 6.55168 22.0088 5.95168ZM8.74882 11.0917V4.90168L14.6688 8.01168C13.0088 8.93168 10.8188 9.97168 8.74882 11.0917Z" />
+          </svg>
+        </a>
+    </div>
+    <select>
+      <option>English</option>
+    </select>
+  </div>    
+      <!-- Add more languages if needed -->
+    </select>
+  </footer>
+</div>
+
+</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const navMenu = document.getElementById("navMenu");
+  navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
+}
+
+
+</script>
+</body>
+</html>
