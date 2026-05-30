@@ -1,0 +1,131 @@
+:root {
+  --bg: #051B17;
+  --accent: #00F3C0;
+  --muted: #A7FF4A;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+}
+
+.logo img {
+  width: 150px;
+  margin: 20px 0;
+  display: inline-block;
+}
+
+.btn-main {
+  background: #0D6EFD;
+  color: #fff;
+  padding: 18px 40px;
+  font-size: 20px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  margin-top: 40px;
+  transition: transform .18s ease, opacity .18s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-main:hover {
+  transform: scale(1.05);
+  opacity: .96;
+}
+
+.popup-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .25);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 36px 26px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0, 255, 200, .28);
+}
+
+.popup-box h2 {
+  font-size: 24px;
+  margin-bottom: 18px;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 255, 200, .35);
+}
+
+.popup-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  font-size: 17px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-green {
+  background: linear-gradient(135deg, #00d67f, #00a85c);
+  box-shadow: 0 0 12px rgba(0, 255, 180, .45);
+  color: white;
+}
+
+.btn-red {
+  background: linear-gradient(135deg, #ff6363, #d84343);
+  box-shadow: 0 0 12px rgba(255, 100, 100, .42);
+  color: white;
+}
+
+@media (max-height: 480px) {
+  .popup-box {
+    padding: 16px;
+  }
+}
+
+/* safety fallback if pipeline hides the button */
+#openPopupBtn {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 10001 !important;
+}
+
+/* noscript fallback */
+.noscript-fallback {
+  display: none;
+  margin-top: 18px;
+}
+
+noscript .noscript-fallback {
+  display: block;
+}
