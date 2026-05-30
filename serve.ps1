@@ -1,9 +1,9 @@
-$ports = @(8000, 8080, 3000, 5000, 5500)
+$ports = @(56789, 8000, 8080, 3000, 5000, 5500)
 $started = $false
 
 foreach ($port in $ports) {
     $listener = New-Object System.Net.HttpListener
-    $url = "http://localhost:$port/"
+    $url = "http://127.0.0.1:$port/"
     try {
         $listener.Prefixes.Add($url)
         $listener.Start()
@@ -29,7 +29,7 @@ try {
             $response = $context.Response
             
             $path = $request.Url.LocalPath.TrimStart('/')
-            if ($path -eq "") { $path = "sakshi/index.html" }
+            if ($path -eq "" -or $path -eq "sakshi/") { $path = "sakshi/single-file.html" }
             $localPath = [System.IO.Path]::Combine((Get-Location).Path, $path)
             
             Write-Host "Request for: $path -> $localPath"
